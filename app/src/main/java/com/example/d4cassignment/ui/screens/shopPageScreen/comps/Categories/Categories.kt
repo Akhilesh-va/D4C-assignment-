@@ -18,6 +18,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.d4cassignment.ui.theme.ScreenHeading
 
 @Composable
 fun Categories(categories : List<Pair<String,Int>>) {
@@ -26,7 +27,7 @@ fun Categories(categories : List<Pair<String,Int>>) {
         Row( modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),verticalAlignment = Alignment.CenterVertically ,
             horizontalArrangement = Arrangement.SpaceBetween ) {
             Text(
-                text = "Categories", fontSize = 24.sp, fontWeight = FontWeight.ExtraBold , color = Color.White
+                text = "Categories", fontSize = 24.sp, fontFamily = ScreenHeading, fontWeight = FontWeight.ExtraBold , color = Color.White
             )
             Text(
                 text = "See all",

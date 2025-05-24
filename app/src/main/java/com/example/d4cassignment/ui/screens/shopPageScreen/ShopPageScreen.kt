@@ -2,13 +2,10 @@ package com.example.d4cassignment.ui.screens.shopPageScreen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -33,19 +30,20 @@ import com.example.d4cassignment.ui.screens.shopPageScreen.comps.Categories.Cate
 import com.example.d4cassignment.ui.screens.shopPageScreen.comps.HeroProduct.Product
 import com.example.d4cassignment.ui.screens.shopPageScreen.comps.NewProduct
 import com.example.d4cassignment.ui.screens.shopPageScreen.comps.ShopPageTopBar
+import com.example.d4cassignment.ui.theme.StandardFont
 
 @Composable
 fun ShopPageScreen() {
     val categoryList = listOf(
-        "Cleaners" to R.drawable.categorysample,
+        "Cleaners" to R.drawable.product_image,
         "Groceries" to R.drawable.categorysample,
-        "Stationery" to R.drawable.categorysample,
+        "Stationery" to R.drawable.product_image,
         "Laundry" to R.drawable.categorysample,
-        "Beverages" to R.drawable.categorysample,
+        "Beverages" to R.drawable.product_image,
         "Groceries" to R.drawable.categorysample,
-        "Stationery" to R.drawable.categorysample,
+        "Stationery" to R.drawable.product_image,
         "Laundry" to R.drawable.categorysample,
-        "Beverages" to R.drawable.categorysample
+        "Beverages" to R.drawable.product_image
     )
     LazyColumn(
         modifier = Modifier
@@ -73,6 +71,7 @@ fun ShopPageScreen() {
                     )
                     Text(
                         text = "GET 20% OFF",
+                        fontFamily = StandardFont,
                         modifier = Modifier.padding(top = 16.dp, bottom = 24.dp),
                         fontSize = 24.sp,
                         fontWeight = FontWeight.Normal,
@@ -80,6 +79,7 @@ fun ShopPageScreen() {
                     )
                     Text(
                         text = "12-16 October",
+                        fontFamily = StandardFont,
                         modifier = Modifier
                             .clip(RoundedCornerShape(200.dp))
                             .background(color = colorResource(R.color.d4cgreen))
@@ -115,9 +115,61 @@ fun ShopPageScreen() {
             NewProduct()
         }
 
-        items(4) {
-            Product()
+items(1) {
+    Product(
+        R.drawable.product_image,
+        "clencera",
+        "RS. 355.20",
+        "RS. 444.00",
+        description = "French clay and algae-powered cleanser",
+        rating = 5,
+        review = "249 reviews",
+        pro1 = "Skin Tightness",
+        pro2 = "Dry & Dehydrated Skin",
+        inStock = true,
+        bestSeller = true,
+        isSelected = true
+
+
+    )
+}
+        items(1) {
+            Product(
+                R.drawable.product_image,
+                "glow",
+                "RS. 355.20",
+                "RS. 444.00",
+                description = "French clay and algae-powered cleanser",
+                rating = 3,
+                review = "249 reviews",
+                pro1 = "Skin Tightness",
+                pro2 = "Dry & Dehydrated Skin",
+                inStock = false,
+                bestSeller = false,
+                isSelected = false
+
+
+            )
         }
+        items(1) {
+            Product(
+                R.drawable.product_image,
+                "afterglow",
+                "RS. 355.20",
+                "RS. 444.00",
+                description = "French clay and algae-powered cleanser",
+                rating = 4,
+                review = "249 reviews",
+                pro1 = "Skin Tightness",
+                pro2 = "Dry & Dehydrated Skin",
+                inStock = true,
+                bestSeller = false,
+                isSelected = false
+
+
+            )
+        }
+
     }
 
 

@@ -14,11 +14,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.d4cassignment.R
+import com.example.d4cassignment.ui.theme.ScreenHeading
+import com.example.d4cassignment.ui.theme.StandardFont
 
 @Composable
 fun ShopPageTopBar() {
@@ -30,8 +33,8 @@ fun ShopPageTopBar() {
 
         Row() {
             Icon(Icons.Default.ArrowBack, "", tint = Color.White, modifier = Modifier.size(28.dp))
-            Text(text = "Shop", fontSize = 24.sp, color = Color.White, fontWeight = FontWeight.Bold
-            , modifier = Modifier.padding(start = 10.dp))
+            Text(text = "Shop", fontFamily = ScreenHeading, fontSize = 24.sp, color = Color.White, fontWeight = FontWeight.ExtraBold,
+             modifier = Modifier.padding(start = 10.dp))
 
         }
 

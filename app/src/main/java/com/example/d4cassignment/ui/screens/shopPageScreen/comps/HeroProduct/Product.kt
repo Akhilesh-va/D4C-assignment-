@@ -31,10 +31,23 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.d4cassignment.R
+import com.example.d4cassignment.ui.theme.ProductHeading
+import com.example.d4cassignment.ui.theme.StandardFont
 
-@Preview(showBackground = true, showSystemUi = true)
+
 @Composable
-fun Product() {
+fun Product(image : Int ,
+            name : String ,
+            price : String ,
+            originalPrice : String,
+            description : String ,
+            rating : Int,
+            review : String ,
+            pro1:String,
+            pro2: String,
+            inStock: Boolean,
+            bestSeller : Boolean,
+            isSelected : Boolean) {
     Box(modifier = Modifier.height(550.dp).padding(top = 20.dp), contentAlignment = Alignment.Center) {
         Column {
             Box() {
@@ -46,6 +59,7 @@ fun Product() {
 
 
                 )
+
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -53,8 +67,17 @@ fun Product() {
                         .fillMaxWidth()
 
                 ) {
+
                     Image(
-                        painter = painterResource(R.drawable.love), "",
+                        painter = if(isSelected ==true){
+                           painterResource(R.drawable.love)
+
+                        }
+                        else
+                        {
+                            painterResource(R.drawable.unselectedheart)
+                        },
+                        "",
                         modifier = Modifier
                             .padding(top = 8.dp, start = 8.dp)
                             .clip(shape = CircleShape)
@@ -64,24 +87,25 @@ fun Product() {
 
 
                     )
-
-                    Text(
-                        text = "Best seller",
-                        modifier = Modifier
-                            .padding(end = 40.dp)
-                            .clip(
-                                RoundedCornerShape(200.dp)
-                            )
-                            .background(Color.Black)
-                            .padding(horizontal = 12.dp, vertical = 6.dp),
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = colorResource(R.color.d4cgreen)
-                    )
+                    if(bestSeller == true) {
+                        Text(
+                            text = "Best seller",
+                            modifier = Modifier
+                                .padding(end = 40.dp)
+                                .clip(
+                                    RoundedCornerShape(200.dp)
+                                )
+                                .background(Color.Black)
+                                .padding(horizontal = 12.dp, vertical = 6.dp),
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.ExtraBold,
+                            color = colorResource(R.color.d4cgreen)
+                        )
+                    }
 
                 }
                 Image(
-                    painterResource(R.drawable.product_image),
+                    painterResource(image),
                     "",
                     modifier = Modifier
                         .size(900.dp)
@@ -120,8 +144,8 @@ fun Product() {
                     horizontalArrangement = Arrangement.SpaceBetween,
                 ) {
                     Text(
-                        text = "clencera", color = colorResource(R.color.d4cgreen),
-                        fontSize = 36.sp, modifier = Modifier,
+                        text = name, color = colorResource(R.color.d4cgreen), fontFamily = ProductHeading,
+                        fontSize = 36.sp, modifier = Modifier.padding(top = 5.dp),
                         fontWeight = FontWeight.Bold
                     )
                     Row(
@@ -129,20 +153,42 @@ fun Product() {
                         modifier = Modifier.padding(start = 35.dp)
 
                     ) {
-                        Box(
-                            modifier = Modifier
-                                .size(8.dp)
-                                .clip(CircleShape)
-                                .background(colorResource(R.color.d4cgreen))
-                        )
-                        Spacer(modifier = Modifier.width(2.dp))
-                        Text(
-                            text = "In stock",
-                            color = colorResource(R.color.d4cgreen),
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Medium,
-                            modifier = Modifier
-                        )
+
+
+                        if(inStock) {
+                            Box(
+                                modifier = Modifier
+                                    .size(8.dp)
+                                    .clip(CircleShape)
+                                    .background(colorResource(R.color.d4cgreen))
+                            )
+                            Spacer(modifier = Modifier.width(2.dp))
+                            Text(
+                                text = "In stock",
+                                fontFamily = StandardFont,
+                                color = colorResource(R.color.d4cgreen),
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.Medium,
+                                modifier = Modifier
+                            )
+                        }
+                        else{
+                            Box(
+                                modifier = Modifier
+                                    .size(8.dp)
+                                    .clip(CircleShape)
+                                    .background(Color.Red)
+                            )
+                            Spacer(modifier = Modifier.width(2.dp))
+                            Text(
+                                text = "Out of stock",
+                                fontFamily = StandardFont,
+                                color = Color.Red,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.Medium,
+                                modifier = Modifier
+                            )
+                        }
                     }
                 }
                 Spacer(modifier = Modifier.height(4.dp))
@@ -154,7 +200,8 @@ fun Product() {
                     verticalArrangement = Arrangement.Center
                 ) {
                     Text(
-                        "French clay and algae-powered cleanser",
+                        description,
+                        fontFamily = StandardFont,
                         color = Color.White, fontSize = 16.sp
                     )
                     Spacer(modifier = Modifier.height(2.dp))
@@ -163,7 +210,8 @@ fun Product() {
                         horizontalArrangement = Arrangement.Center
                     ) {
                         Text(
-                            "Skin Tightness",
+                            pro1,
+                            fontFamily = StandardFont,
                             color = Color.White,
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Bold
@@ -177,7 +225,8 @@ fun Product() {
                         )
                         Spacer(modifier = Modifier.width(4.dp))
                         Text(
-                            "Dry & Dehydrated Skin",
+                            pro2,
+                            fontFamily = StandardFont,
                             color = Color.White,
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Bold
@@ -190,12 +239,14 @@ fun Product() {
                         horizontalArrangement = Arrangement.Center
                     ) {
                         Text(
-                            text = "RS. 355.20", color = colorResource(R.color.teal_700),
+                            text = price, color = colorResource(R.color.teal_700),
+                            fontFamily = StandardFont,
                             fontSize = 16.sp, fontWeight = FontWeight.ExtraBold
                         )
                         Spacer(modifier = Modifier.width(6.dp))
                         Text(
-                            text = "RS. 444.00", color = Color.LightGray,
+                            text = originalPrice, color = Color.LightGray,
+                            fontFamily = StandardFont,
                             fontSize = 14.sp, fontWeight = FontWeight.Normal,
                             style = TextStyle(textDecoration = TextDecoration.LineThrough)
                         )
@@ -206,7 +257,7 @@ fun Product() {
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.Center
                     ) {
-                        repeat(5) {
+                        repeat(rating) {
                             Image(
                                 painterResource(R.drawable.star),
                                 "",
@@ -214,7 +265,8 @@ fun Product() {
                             )
                         }
                         Spacer(modifier = Modifier.width(6.dp))
-                        Text(text = "249 reviews" , color = Color.White ,
+                        Text(text = review , color = Color.White ,
+                            fontFamily = StandardFont,
                             textDecoration = TextDecoration.Underline ,)
                     }
 

@@ -14,16 +14,19 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.d4cassignment.ui.theme.ScreenHeading
+import com.example.d4cassignment.ui.theme.StandardFont
 
 @Composable
 fun NewProduct() {
     Row( modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),verticalAlignment = Alignment.CenterVertically ,
         horizontalArrangement = Arrangement.SpaceBetween ) {
         Text(
-            text = "New products", fontSize = 24.sp, fontWeight = FontWeight.ExtraBold , color = Color.White
+            text = "New products", fontSize = 24.sp, fontFamily = ScreenHeading, fontWeight = FontWeight.ExtraBold , color = Color.White
         )
         Text(
             text = "See all",
+            fontFamily = StandardFont,
             fontSize = 16.sp,
             fontWeight = FontWeight.Normal,
             style = TextStyle(textDecoration = TextDecoration.Underline),
